@@ -160,11 +160,14 @@ public class ConcurrentBucketHashMap<K, V> {
             Bucket<K, V> theBucket =  buckets.get(i) ;
             theBucket.lockReadLock();            
         }
-        for(int i = 0; i < numberOfBuckets ; i++ ) {
-        	size += buckets.get(i).size();
-        }
-        for(int i = 0; i < numberOfBuckets ; i++ ) {
-        	buckets.get(i).unlockReadLock();
+        try{
+	        for(int i = 0; i < numberOfBuckets ; i++ ) {
+	        	size += buckets.get(i).size();
+	        }
+        }finally{
+	        for(int i = 0; i < numberOfBuckets ; i++ ) {
+	        	buckets.get(i).unlockReadLock();
+	        }
         }
         return size ;
     }
