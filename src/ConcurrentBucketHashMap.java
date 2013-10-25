@@ -50,6 +50,8 @@ public class ConcurrentBucketHashMap<K, V> {
     class Bucket<K, V> {
         private final List<Pair<K, V>> contents =
                 new ArrayList<Pair<K, V>>() ;
+        
+        private ReentrantReadWriteLock rwLock = new ReentrantReadWriteLock();
 
         /*
          * Return the current Bucket size.
