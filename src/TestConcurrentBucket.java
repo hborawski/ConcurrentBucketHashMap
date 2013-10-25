@@ -1,7 +1,7 @@
 
 public class TestConcurrentBucket {
 	public static void main(String[] args){
-		final ConcurrentBucketHashMap map = new ConcurrentBucketHashMap(3);
+		final ConcurrentBucketHashMap<Integer, Integer> map = new ConcurrentBucketHashMap<Integer, Integer>(3);
 		for(int i = 0; i < 2; i ++){
 			Runnable r = new Runnable(){
 	
