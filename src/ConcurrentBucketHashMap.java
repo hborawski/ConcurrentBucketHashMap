@@ -93,6 +93,9 @@ public class ConcurrentBucketHashMap<K, V> {
          */
         public void unlockWriteLock(){
         	ReentrantReadWriteLock.WriteLock write = rwLock.writeLock();
+        	if(write.isHeldByCurrentThread()){
+        		write.unlock();
+        	}
         }
         
         /*
@@ -107,6 +110,7 @@ public class ConcurrentBucketHashMap<K, V> {
          */
         public void unlockReadLock(){
         	ReentrantReadWriteLock.ReadLock read = rwLock.readLock();
+        	read.unlock();
         }
         
         /*
