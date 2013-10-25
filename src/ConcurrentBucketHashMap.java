@@ -92,28 +92,28 @@ public class ConcurrentBucketHashMap<K, V> {
          * Attempts to unlock the write lock
          */
         public void unlockWriteLock(){
-        	
+        	ReentrantReadWriteLock.WriteLock write = rwLock.writeLock();
         }
         
         /*
          * Attempts to unlock the write lock
          */
         public void lockWriteLock(){
-        	
+        	ReentrantReadWriteLock.WriteLock write = rwLock.writeLock();
         }
         
         /*
          * Attempts to unlock the write lock
          */
         public void unlockReadLock(){
-        	
+        	ReentrantReadWriteLock.ReadLock read = rwLock.readLock();
         }
         
         /*
          * Attempts to unlock the write lock
          */
         public void lockReadLock(){
-        	
+        	ReentrantReadWriteLock.ReadLock read = rwLock.readLock();
         }
     }
 
