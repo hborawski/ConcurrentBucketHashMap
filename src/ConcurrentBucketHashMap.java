@@ -158,13 +158,13 @@ public class ConcurrentBucketHashMap<K, V> {
 
         for ( int i = 0 ; i < numberOfBuckets ; i++ ) {
             Bucket<K, V> theBucket =  buckets.get(i) ;
-            theBucket.lockReadLock();
-            try{
-            	size += theBucket.size();
-            }finally{
-            	theBucket.unlockReadLock();
-            }
-            
+            theBucket.lockReadLock();            
+        }
+        for(int i = 0; i < numberOfBuckets ; i++ ) {
+        	size += buckets.get(i).size();
+        }
+        for(int i = 0; i < numberOfBuckets ; i++ ) {
+        	buckets.get(i).unlockReadLock();
         }
         return size ;
     }
