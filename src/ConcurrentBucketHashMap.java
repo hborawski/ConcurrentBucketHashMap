@@ -94,6 +94,7 @@ public class ConcurrentBucketHashMap<K, V> {
         public void unlockWriteLock(){
         	ReentrantReadWriteLock.WriteLock write = rwLock.writeLock();
     		write.unlock();
+    		System.out.println("Write unlocked");
         }
         
         /*
@@ -102,6 +103,7 @@ public class ConcurrentBucketHashMap<K, V> {
         public void lockWriteLock(){
         	ReentrantReadWriteLock.WriteLock write = rwLock.writeLock();
         	write.lock();
+        	System.out.println("Write locked");
         }
         
         /*
@@ -110,6 +112,7 @@ public class ConcurrentBucketHashMap<K, V> {
         public void unlockReadLock(){
         	ReentrantReadWriteLock.ReadLock read = rwLock.readLock();
         	read.unlock();
+        	System.out.println("Read unlocked");
         }
         
         /*
@@ -118,6 +121,7 @@ public class ConcurrentBucketHashMap<K, V> {
         public void lockReadLock(){
         	ReentrantReadWriteLock.ReadLock read = rwLock.readLock();
         	read.lock();
+        	System.out.println("Read locked");
         }
     }
 
